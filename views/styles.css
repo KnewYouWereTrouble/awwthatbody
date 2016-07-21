@@ -1,0 +1,79 @@
+/* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
+
+#app, .body{
+    height: 100%;
+}
+
+/* Landing */
+.landing-header {
+    background-image: url("../dist/images/bg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+
+.login-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+	font-size: inherit;
+}
+
+/* Navbar style */
+.navbar-style {
+    height: 18vw;
+}
+
+.navbar-style-pic{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: -1;
+    height: 18vw;
+}
+
+.navbar-user-info {
+    height: 18vw;
+    background: rgba(33, 33, 33, 0.5);
+}
+
+/* Sidebar */
+.sidebar {
+    height: 58vw;
+    background-color: #ffcc80;
+}
+
+
+
+.no-bot-margin {
+    margin-bottom: 0;
+}
+
+/* Statsboard */
+.stats-food-history {
+    max-height: 13vw;
+    overflow-y: auto;
+}
+
+/* Food Search */
+.food-list-result {
+    max-height: 33vw;
+    overflow-y: auto;
+}
+
+.foodcard-img {
+    height: 28vw;
+}
