@@ -46,8 +46,7 @@ const Navbar = React.createClass({
                                 <h4 className="condensed light">{this.props.username}</h4>
                             </div>
                         </div>
-                        <br /><br />
-                        <span>This is a wonderful morning. </span>
+                        <span>Keep Up the good work! Please come back again! </span>
                         <a onClick={this.logout} href="/logout">Logout ?</a>
                     </div>
 
