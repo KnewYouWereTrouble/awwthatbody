@@ -2,8 +2,10 @@ import {Map, fromJS} from 'immutable'
 import {browserHistory} from 'react-router'
 
 function login_user(state, response){
-    const temp = state.remove('login_err')
-    return temp.set('username', response.username)
+    var temp = state.remove('login_err')
+    temp = temp.set('username', response.username)
+    temp = temp.set('profile_pic', response.profile_pic)
+    return temp
 }
 
 function login_user_err(state){
@@ -11,8 +13,10 @@ function login_user_err(state){
 }
 
 function signup_user(state, response){
-    const temp = state.remove('signup_err')
-    return temp.set('username', response.username)
+    var temp = state.remove('signup_err')
+    temp = temp.set('username', response.username)
+    temp = temp.set('profile_pic', response.profile_pic)
+    return temp
 }
 
 function signup_user_err(state){
@@ -35,6 +39,10 @@ function clear_all_err(state){
     return temp
 }
 
+function update_profile_pic(state, response){
+    return state.set('profile_pic', response.profile_pic)
+}
+
 export default function(state = Map(), action){
     switch(action.type){
         case 'LOGIN USER' :
@@ -43,7 +51,8 @@ export default function(state = Map(), action){
             return signup_user(state, action.response)
         case 'UPDATE USER' :
             return update_user(state, action.response)
-
+        case 'UPDATE PROFILE PIC' :
+            return update_profile_pic(state, action.response)
 
         case 'LOGIN USER ERROR' :
             return login_user_err(state)

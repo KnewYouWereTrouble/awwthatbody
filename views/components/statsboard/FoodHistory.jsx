@@ -32,11 +32,11 @@ const DailyFoodIntake = React.createClass({
         axios.post('/userdb/getuserfoodhistory', {dayIdx : dayIdx})
             .then(response => {
                 this.setState({
-                    breakfast_history : response.data[0],
-                    lunch_history : response.data[1],
-                    dinner_history : response.data[2],
-                    supper_history : response.data[3],
-                    snacks_history : response.data[4],
+                    breakfast_history : response.data[0] || [],
+                    lunch_history : response.data[1] || [],
+                    dinner_history : response.data[2] || [],
+                    supper_history : response.data[3] || [],
+                    snacks_history : response.data[4] || [],
                 })
             })
     },

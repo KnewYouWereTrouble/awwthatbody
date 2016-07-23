@@ -22,7 +22,6 @@ function update_user(response){
     }
 }
 
-
 function login_user_err(response){
     return {
         type : "LOGIN USER ERROR",
@@ -44,6 +43,22 @@ function update_user_err(response){
 export function clear_all_errors(){
     return {
         type : "CLEAR ALL ERRORS"
+    }
+}
+
+export function update_profile_pic(response){
+    return {
+        type : "UPDATE PROFILE PIC",
+        response : response.data
+    }
+}
+
+export function ajaxUpdateProfilePic(){
+    return function(dispatch){
+        axios.get("/userdb/getprofilepic")
+        .then(response => {
+            dispatch(update_profile_pic(response))
+        })
     }
 }
 

@@ -12,12 +12,13 @@ var session = require('express-session')
 var MongoStore = require('connect-mongo')(session)
 var passport = require('passport')
 var CronJob = require('cron').CronJob;
+var multer = require('multer')
 
 // Load controllers ~
 var user_controller = require('./controllers/user_controller')
 var auth_controller = require('./controllers/auth_controller')
 var food_controller = require('./controllers/food_controller')
-
+var img_controller = require('./controllers/img_controller')
 // Cron Job ~
 var user_daily_cron = require('./models/user_daily_cron')
 
@@ -49,6 +50,7 @@ app.use(express_session)
 
 
 // Middleware ~
+
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 app.use(passport.initialize())
@@ -124,6 +126,12 @@ app_router.route("/userdb/getuser")
 
 app_router.route("/userdb/updateuser")
     .post(user_controller.update_user)
+
+app_router.route("/userdb/getprofilepic")
+    .get(user_controller.get_profile_pic)
+
+app_router.route("/userdb/changeprofilepic")
+    .post(img_controller.multer.single('upl'), img_controller.sendUploadToGCS, user_controller.change_profile_pic)
 
 app_router.route("/userdb/getuserfoodhistory")
     .post(user_controller.get_user_food_history)

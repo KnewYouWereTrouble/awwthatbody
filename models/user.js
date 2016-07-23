@@ -60,7 +60,7 @@ var UserSchema = new Schema({
         history_supper : [],
         history_snacks : [],
 
-
+        profile_pic : {type : String, required : true, default : "./dp.jpg"}
 
 })
 

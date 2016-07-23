@@ -23,6 +23,7 @@ const Profile = React.createClass({
     //This is for page refresh
     componentWillReceiveProps: function(nextProps) {
         this.props.clear_all_errors()
+        this.props.ajaxUpdateProfilePic()
         axios.post('/userdb/getuser', {username: nextProps.username,})
             .then(response => {
                 this.setState({user_email : response.data.email,
@@ -89,9 +90,22 @@ const Profile = React.createClass({
     render : function(){
         return (
             <div>
-                <h4>Profile</h4>
+                <h4>Edit Profile</h4>
                 <div className="row">
-                    <div className="col s6 offset-s3">
+                    <div className="col s3 offset-s1">
+                        <form encType="multipart/form-data" method="post" action="/userdb/changeprofilepic">
+                            <br /> <br />
+                            <img className="circle responsive-img" src={this.props.profile_pic}/>
+                            <input type="file" name="upl" required/>
+                            <br /> <br />
+                            <button className="btn waves-effect waves-light amber darken-2" type="submit" name="action">Change Profile Picture
+                                &nbsp;&nbsp; <i className="fa fa-camera" aria-hidden="true"></i>
+                            </button> <br />
+                        </form>
+
+                    </div>
+
+                    <div className="col s4 offset-s1">
                         <form className="col s12" onSubmit={this.submitForm}>
 
                             <span className="condensed light grey-text">Name :</span>
@@ -118,12 +132,13 @@ const Profile = React.createClass({
                             <input type="text" id="target" value={this.state.user_calories_target} pattern="[0-9]{1,5}" required
                                 onChange={this.handleCaloriesChange} placeholder="Calories (kcal)"></input>
 
-                            <button className="btn waves-effect waves-light" type="submit" name="action">UPDATE
+                            <button className="btn waves-effect waves-light amber darken-2" type="submit" name="action">UPDATE
                                 <i className="material-icons right">send</i>
                             </button> <br />
 
                         </form>
                     </div>
+
                 </div>
             </div>
 
@@ -135,7 +150,8 @@ const Profile = React.createClass({
 
 function mapStateToProps(state) {
   return {
-    username: state.get('username')
+    username: state.get('username'),
+    profile_pic : state.get('profile_pic')
   };
 }
 

@@ -137,11 +137,40 @@ exports.update_user = function(req, res, next){
     })
 }
 
+exports.change_profile_pic = function(req, res, next){
+    var data = req.body;
+    // Was an image uploaded? If so, we'll use its public URL
+    // in cloud storage.
+    if (req.file && req.file.cloudStoragePublicUrl) {
+      data.imageUrl = req.file.cloudStoragePublicUrl;
+
+      User.findOne({username : req.user.username}, function(err, user){
+          if(err) res.json(err)
+          else {
+              user.profile_pic = data.imageUrl
+              user.save(function(err, user){
+                  if(err) res.json(err);
+                  else res.redirect("/profile")
+              })
+          }
+      })
+
+    }
+}
+
+exports.get_profile_pic = function(req, res, next){
+  User.findOne({username : req.user.username}, function(err, user){
+      if(err) res.json(err)
+      else res.json(user)
+    })
+ }
+
 exports.user_add_food = function(req, res, next){
     User.findOne({username : req.user.username}, function(err, user){
         if(err) res.json(err)
         else{
-
+            console.log(req.food)
+            console.log(req.body.type)
             switch(req.body.type){
                 case "breakfast" :
                     user.breakfast.unshift(req.food["Food Name"])
@@ -151,6 +180,7 @@ exports.user_add_food = function(req, res, next){
                     break;
                 case "dinner" :
                     user.dinner.unshift(req.food["Food Name"])
+                    console.log(user.dinner)
                     break;
                 case "supper" :
                     user.supper.unshift(req.food["Food Name"])
@@ -161,17 +191,23 @@ exports.user_add_food = function(req, res, next){
             }
 
             user.daily_stats.energy += req.food["Energy (kcal)"]
-            user.daily_stats.protein += Math.round(req.food["Protein (g)"] * 100) / 100
+            user.daily_stats.protein += Number((req.food["Protein (g)"]).toFixed(2))
             user.daily_stats.fat_total += req.food["Fat Total (g)"]
             user.daily_stats.cholesterol+= req.food["Cholesterol (mg)"]
             user.daily_stats.dietary_fibre += req.food["Dietary Fibre (g)"]
             user.daily_stats.carbohydrates+= req.food["Carbohydrates (g)"]
-            user.daily_stats.calcium += req.food["Calcium (mg)"]
+            user.daily_stats.calcium += isNaN(req.food["Calcium (mg)"]) ? 0 : req.food["Calcium (mg)"]
             user.daily_stats.sodium += req.food["Sodium (mg)"]
 
             user.save(function(err, user){
-                if(err) res.json(err);
-                else res.json(user)
+                if(err) {
+                    console.log(err)
+                    res.json(err);
+                }
+                else {
+                    console.log("no error")
+                    res.json(user)
+                }
             })
         }
     })
@@ -207,12 +243,12 @@ exports.user_remove_food = function(req, res, next){
             }
 
             user.daily_stats.energy -= req.food["Energy (kcal)"]
-            user.daily_stats.protein -= Math.round(req.food["Protein (g)"] * 100) / 100
+            user.daily_stats.protein -= Number((req.food["Protein (g)"]).toFixed(2))
             user.daily_stats.fat_total -= req.food["Fat Total (g)"]
             user.daily_stats.cholesterol -= req.food["Cholesterol (mg)"]
             user.daily_stats.dietary_fibre -= req.food["Dietary Fibre (g)"]
             user.daily_stats.carbohydrates -= req.food["Carbohydrates (g)"]
-            user.daily_stats.calcium -= req.food["Calcium (mg)"]
+            user.daily_stats.calcium -= isNaN(req.food["Calcium (mg)"]) ? 0 : req.food["Calcium (mg)"]
             user.daily_stats.sodium -= req.food["Sodium (mg)"]
 
             user.save(function(err, user){

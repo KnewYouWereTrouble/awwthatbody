@@ -38,7 +38,7 @@ const Navbar = React.createClass({
                         <br /><br />
                         <div className="row">
                             <div className="col s6">
-                                <img className="circle responsive-img" src="./dp.jpg"/>
+                                <img className="circle" height="50" src={this.props.profile_pic}/>
                             </div>
                             <div className="col s6">
                                 <br /><br />
@@ -64,7 +64,8 @@ const Navbar = React.createClass({
 
 function mapStateToProps(state) {
   return {
-    username: state.get('username')
+    username: state.get('username'),
+    profile_pic : state.get('profile_pic')
   };
 }
 

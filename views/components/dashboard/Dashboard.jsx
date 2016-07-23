@@ -18,6 +18,7 @@ const Dashboard = React.createClass({
 
     getInitialState : function(){
         return {
+            gender : "-",
             statistics : {
                 user_energy : "-",
                 user_protein : "-",
@@ -40,6 +41,7 @@ const Dashboard = React.createClass({
     getUserInfo : function(){
         axios.post('/userdb/getuser')
             .then(response => {
+                console.log(response.data)
                 this.setState({statistics : {
                                 user_energy : response.data.daily_stats.energy,
                                 user_protein : response.data.daily_stats.protein,
@@ -55,7 +57,8 @@ const Dashboard = React.createClass({
                                 user_lunch : response.data.lunch,
                                 user_dinner : response.data.dinner,
                                 user_supper : response.data.supper,
-                                user_snacks : response.data.snacks})
+                                user_snacks : response.data.snacks,
+                                gender : response.data.gender})
             })
     },
 
@@ -117,7 +120,7 @@ const Dashboard = React.createClass({
                     </div>
 
                     <div className="col s4">
-                        <Avatar statistics={this.state.statistics}
+                        <Avatar gender={this.state.gender} statistics={this.state.statistics}
                             user_daily_calorie_target={this.state.user_daily_calorie_target}/>
                     </div>
 
