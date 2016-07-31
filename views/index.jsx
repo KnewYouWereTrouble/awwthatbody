@@ -20,6 +20,7 @@ import Dashboard  from './components/dashboard/Dashboard.jsx'
 import Profile  from './components/profile/Profile.jsx'
 import Foodsearch from './components/foodsearch/Foodsearch.jsx'
 import Statsboard from './components/statsboard/Statsboard.jsx'
+import Explore from './components/explore/Explore.jsx'
 
 require('./styles.css')
 
@@ -43,6 +44,7 @@ const routes = (
             <Route path="/foodsearch" component={Foodsearch}/>
             <Route path="/profile" component={Profile}/>
             <Route path="/statsboard" component={Statsboard}/>
+            <Route path="/explore" component={Explore}/>
         </Route>
     </Router>
 )

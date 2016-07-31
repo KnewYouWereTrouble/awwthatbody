@@ -107,7 +107,22 @@ exports.get_user_food_history = function(req, res, next){
     })
 }
 
-
+exports.get_user_food_cat = function(req, res, next){
+    User.findOne({username : req.user.username}, function(err, user){
+        if(err) res.json(err)
+        else {
+            res.json({
+                month_meat : user.month_meat,
+                month_vegetables : user.month_vegetables,
+                month_seafood : user.month_seafood,
+                month_drinks : user.month_drinks,
+                month_snacks : user.month_snacks,
+                month_staples : user.month_staples,
+                month_fastfood : user.month_fastfood,
+            })
+        }
+    })
+}
 
 
 exports.update_user = function(req, res, next){
@@ -199,6 +214,17 @@ exports.user_add_food = function(req, res, next){
             user.daily_stats.calcium += isNaN(req.food["Calcium (mg)"]) ? 0 : req.food["Calcium (mg)"]
             user.daily_stats.sodium += req.food["Sodium (mg)"]
 
+            switch(req.food.category){
+                case "Meat" : user.month_meat += 1; break;
+                case "Vegetables" : user.month_vegetables += 1; break;
+                case "Snacks" : user.month_snacks += 1; break;
+                case "Seafood" : user.month_seafood += 1; break;
+                case "Drinks" : user.month_drinks += 1; break;
+                case "Staples" : user.month_staples += 1; break;
+                case "Fast Food" : user.month_fastfood += 1; break;
+            }
+
+
             user.save(function(err, user){
                 if(err) {
                     console.log(err)
@@ -250,6 +276,16 @@ exports.user_remove_food = function(req, res, next){
             user.daily_stats.carbohydrates -= req.food["Carbohydrates (g)"]
             user.daily_stats.calcium -= isNaN(req.food["Calcium (mg)"]) ? 0 : req.food["Calcium (mg)"]
             user.daily_stats.sodium -= req.food["Sodium (mg)"]
+
+            switch(req.food.category){
+                case "Meat" : user.month_meat -= 1; break;
+                case "Vegetables" : user.month_vegetables -= 1; break;
+                case "Snacks" : user.month_snacks -= 1; break;
+                case "Seafood" : user.month_seafood -= 1; break;
+                case "Drinks" : user.month_drinks -= 1; break;
+                case "Staples" : user.month_staples -= 1; break;
+                case "Fast Food" : user.month_fastfood -= 1; break;
+            }
 
             user.save(function(err, user){
                 if(err) res.json(err);

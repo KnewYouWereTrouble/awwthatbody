@@ -63,7 +63,7 @@ const Dashboard = React.createClass({
     },
 
 
-    componentDidMount : function(){
+    componentWillMount : function(){
         this.getUserInfo()
     },
 

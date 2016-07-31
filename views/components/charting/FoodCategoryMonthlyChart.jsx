@@ -5,60 +5,39 @@ import {browserHistory} from 'react-router'
 import {connect} from 'react-redux';
 import * as actionCreators from '../../src/action_creators';
 
+import axios from 'axios'
 import moment from 'moment'
 import Chart from 'chart.js'
 
+import chartconfig from '../../../config/chartconfig.js'
 import Timekeeper from '../../src/timekeeper.js'
-
-var data = {
-    labels: [
-        "Meat",
-        "Fish",
-        "Vegetables",
-        "Drinks",
-        "Fruits",
-        "Staples"
-    ],
-    datasets: [
-        {
-            data: [300, 50, 100, 400, 200, 230],
-            backgroundColor: [
-                "#FF6384",
-                "#36A2EB",
-                "#FFCE56",
-                "#ab47bc",
-                "#64ffda",
-                "#bdbdbd",
-
-            ],
-            hoverBackgroundColor: [
-                "#FF6384",
-                "#36A2EB",
-                "#FFCE56",
-                "#ab47bc",
-                "#64ffda",
-                "#bdbdbd",
-            ]
-        }]
-};
 
 
 const FoodCategoryMonthlyChart = React.createClass({
 
     getInitialState : function(){
-        return {}
+        return {
+            cat_chart : null
+        }
     },
 
-    componentDidMount : function(){
-        var ctx = ReactDOM.findDOMNode(this.refs.myChart);
-        var myPieChart = new Chart(ctx,{
-            type: 'pie',
-            data: data,
-
-        });
-
+    get_monthly_food_cat : function(){
+        axios.post("/userdb/getusermonthfoodcat")
+            .then(response => {
+                console.log(response.data)
+                if(this.state.cat_chart) this.state.cat_chart.destroy()
+                var ctx = ReactDOM.findDOMNode(this.refs.myChart);
+                var myPieChart = new Chart(ctx,{
+                    type: 'pie',
+                    data: chartconfig.monthly_food_cat_chart(response.data)
+                });
+                this.setState({monthly_chart : myPieChart})
+            })
     },
 
+    componentWillMount : function(){
+        this.get_monthly_food_cat()
+    },
 
 
     render : function(){

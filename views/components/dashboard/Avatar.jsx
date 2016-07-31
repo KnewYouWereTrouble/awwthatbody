@@ -15,16 +15,16 @@ const Avatar = React.createClass({
             return(
                 <div>
                     <div className="card-panel teal">
-                        <p className="white-text">Good Job, you are eating well!</p>
+                        <p className="white-text">Good Job, but you need to eat more!</p>
                     </div>
                     <br />
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     {this.props.gender === "Male" ?
-                        <img className="center-align" width="40%" src="/images/healthyboy.jpg"/>
+                        <img className="center-align avatar-pic" src="/images/skinnyboy.png"/>
                         :
-                        <img className="center-align" width="40%" src="/images/healthygirl.jpg"/>
+                        <img className="center-align avatar-pic" src="/images/skinnygirl.png"/>
                     }
 
                 </div>)
@@ -32,16 +32,16 @@ const Avatar = React.createClass({
             return(
                 <div>
                     <div className="card-panel orange darken-3">
-                        <p className="white-text">Good Job, but just a bit more and you overshot your daily target!</p>
+                        <p className="white-text">Good Job, you are eating well!</p>
                     </div>
                     <br />
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     {this.props.gender === "Male" ?
-                        <img className="center-align" width="40%" src="/images/healthyboy.jpg"/>
+                        <img className="center-align avatar-pic" src="/images/healthyboy.png"/>
                         :
-                        <img className="center-align" width="40%" src="/images/healthygirl.jpg"/>
+                        <img className="center-align avatar-pic" src="/images/healthygirl.png"/>
                     }
                 </div>)
         }else{
@@ -55,9 +55,9 @@ const Avatar = React.createClass({
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     {this.props.gender === "Male" ?
-                        <img className="center-align" width="40%" src="/images/fatboy.jpg"/>
+                        <img className="center-align avatar-pic" src="/images/fatboy.png"/>
                         :
-                        <img className="center-align" width="40%" src="/images/fatgirl.jpg"/>
+                        <img className="center-align avatar-pic" src="/images/fatgirl.png"/>
                     }
                 </div>
             )

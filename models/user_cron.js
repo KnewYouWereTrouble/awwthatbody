@@ -40,3 +40,25 @@ exports.user_daily_cron = function(){
 
     })
 }
+
+exports.user_monthly_cron = function(){
+    User.find({}, function(err, docs){
+        if(err) console.log(err)
+
+        for(var i = 0; i < docs.length; i++){
+
+            docs[i].month_meat = 0
+            docs[i].month_vegetables = 0
+            docs[i].month_seafood = 0
+            docs[i].month_staples = 0
+            docs[i].month_snacks = 0
+            docs[i].month_drinks = 0
+            docs[i].month_fastfood = 0
+
+            docs[i].save(function(err, docs){
+                if(err)console.log(err)
+            })
+        }
+
+    })
+}

@@ -13,7 +13,7 @@
 /* Landing */
 .landing-header {
     background-image: url("../dist/images/bg.jpg");
-    background-size: cover;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
 
 }
@@ -50,13 +50,28 @@
     background: rgba(33, 33, 33, 0.5);
 }
 
+.navbar-profile-pic {
+    height : 13vw;
+    width : 10vw;
+}
+
+/* Edit profile */
+.edit-profile-pic {
+    height : 20vw;
+    width : 15vw;
+}
+
+/* Avatar */
+.avatar-pic {
+    width : 40%;
+    height: 18vw;
+}
+
 /* Sidebar */
 .sidebar {
     height: 58vw;
     background-color: #ffcc80;
 }
-
-
 
 .no-bot-margin {
     margin-bottom: 0;

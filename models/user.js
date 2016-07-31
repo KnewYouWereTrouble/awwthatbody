@@ -60,7 +60,17 @@ var UserSchema = new Schema({
         history_supper : [],
         history_snacks : [],
 
-        profile_pic : {type : String, required : true, default : "./dp.jpg"}
+        month_meat : {type : Number, required : true, default : 0},
+        month_vegetables : {type : Number, required : true, default : 0},
+        month_seafood : {type : Number, required : true, default : 0},
+        month_staples : {type : Number, required : true, default : 0},
+        month_snacks : {type : Number, required : true, default : 0},
+        month_drinks : {type : Number, required : true, default : 0},
+        month_fastfood : {type : Number, required : true, default : 0},
+
+        profile_pic : {type : String, required : true, default : "./dp.jpg"},
+
+
 
 })
 

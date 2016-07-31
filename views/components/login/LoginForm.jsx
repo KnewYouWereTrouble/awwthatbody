@@ -23,9 +23,7 @@ const LoginForm = React.createClass({
                 <div className="card-content">
                     <form onSubmit={this.submitForm}>
                         <h5 className="condensed light">Login</h5>
-
                         <br />
-
                         <span>Username</span>
                         <input className="black-text" type="text" ref="usernameField" required></input>
                         <span>Password</span>

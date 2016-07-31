@@ -10,7 +10,7 @@ import * as actionCreators from '../../src/action_creators';
 const Navbar = React.createClass({
 
     getInitialState : function(){
-        var dpIdx = Math.floor(Math.random() * (8 - 0)) + 0;
+        var dpIdx = Math.floor(Math.random() * (10 - 0)) + 0;
         return {
             dpIdx : dpIdx
         }
@@ -26,6 +26,8 @@ const Navbar = React.createClass({
             case 5 : return "./images/dp5.jpg"
             case 6 : return "./images/dp6.jpg"
             case 7 : return "./images/dp7.jpg"
+            case 8 : return "./images/dp8.jpg"
+            case 9 : return "./images/dp9.jpg"
         }
     },
 
@@ -38,7 +40,7 @@ const Navbar = React.createClass({
                         <br /><br />
                         <div className="row">
                             <div className="col s6">
-                                <img className="circle" height="50" src={this.props.profile_pic}/>
+                                <img className="circle navbar-profile-pic" src={this.props.profile_pic}/>
                             </div>
                             <div className="col s6">
                                 <br /><br />
@@ -46,7 +48,6 @@ const Navbar = React.createClass({
                                 <h4 className="condensed light">{this.props.username}</h4>
                             </div>
                         </div>
-                        <span>Keep Up the good work! Please come back again! </span>
                         <a onClick={this.logout} href="/logout">Logout ?</a>
                     </div>
 

@@ -15,7 +15,7 @@ export default React.createClass({
                         <br /><br /><br /><br /><br /><br />
                         <br /><br /><br /><br /><br /><br />
                         <div className="row center">
-                            <h5 className="grey-text darken-2 condensed light">You wish you had it, don't you?</h5>
+                            <h5 className="grey-text darken-3 condensed light">You wish you had it, don't you?</h5>
                         </div>
                         <div className="row center">
                             <Link id="download-button" className="btn-large waves-effect waves-light amber darken-2" to="/login">Get Started</Link>

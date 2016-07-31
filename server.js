@@ -20,7 +20,7 @@ var auth_controller = require('./controllers/auth_controller')
 var food_controller = require('./controllers/food_controller')
 var img_controller = require('./controllers/img_controller')
 // Cron Job ~
-var user_daily_cron = require('./models/user_daily_cron')
+var user_cron = require('./models/user_cron')
 
 //config ~
 var dbconfig = require('./config/dbconfig.js')
@@ -30,9 +30,13 @@ const sessionStore = new MongoStore({mongooseConnection : mongoose.connection, t
 
 new CronJob('00 00 00 * * 0-6', function() {
   console.log('You will see this message at twelve midnight');
-  user_daily_cron.user_daily_cron()
+  user_cron.user_daily_cron()
 }, null, true, 'Singapore');
 
+new CronJob('00 00 00 1 * 0-6', function(){
+    console.log("You will see this message at twelve midnight first day of each month.");
+    user_cron.user_monthly_cron()
+}, null, true, 'Singapore')
 
 // session config ~
 var express_session = session({
@@ -141,6 +145,9 @@ app_router.route("/userdb/getuserhistoryweek")
 
 app_router.route("/userdb/getuserhistorymonth")
     .post(user_controller.get_user_history_month)
+
+app_router.route("/userdb/getusermonthfoodcat")
+    .post(user_controller.get_user_food_cat)
 
 
 // Food DB Query routes ~

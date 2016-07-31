@@ -37,7 +37,7 @@ const Profile = React.createClass({
     },
 
     //This is for initial access
-    componentDidMount : function(){
+    componentWillMount : function(){
         this.props.clear_all_errors()
         if(this.state.user_username === "" && this.props.username){
             axios.post('/userdb/getuser', {username: this.props.username,})
@@ -94,8 +94,8 @@ const Profile = React.createClass({
                 <div className="row">
                     <div className="col s3 offset-s1">
                         <form encType="multipart/form-data" method="post" action="/userdb/changeprofilepic">
-                            <br /> <br />
-                            <img className="circle responsive-img" src={this.props.profile_pic}/>
+                            <br />
+                            <img className="circle edit-profile-pic" src={this.props.profile_pic}/>
                             <input type="file" name="upl" required/>
                             <br /> <br />
                             <button className="btn waves-effect waves-light amber darken-2" type="submit" name="action">Change Profile Picture

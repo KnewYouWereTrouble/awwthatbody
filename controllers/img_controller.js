@@ -42,8 +42,9 @@ function sendUploadToGCS (req, res, next) {
     return next();
   }
 
-  var gcsname = "hello/" + Date.now() + req.file.originalname;
+  var gcsname = req.user.username + "/" + req.file.originalname;
   var file = bucket.file(gcsname);
+
   var stream = file.createWriteStream();
 
   stream.on('error', function (err) {
@@ -71,7 +72,7 @@ var multer = require('multer')({
   fileSize: 20 * 1024 * 1024, // no larger than 20mb
   rename: function (fieldname, filename) {
     // generate a unique filename
-    return filename.replace(/\W+/g, '-').toLowerCase() + Date.now();
+    return filename.replace(/\W+/g, '-').toLowerCase();
   }
 });
 // [END multer]

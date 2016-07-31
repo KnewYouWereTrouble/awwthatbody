@@ -38,33 +38,49 @@ const SignupForm = React.createClass({
 
     render : function(){
         return (
-            <div className="card blue-grey hoverable">
-                <div className="card-content white-text">
+            <div className="card z-depth-1">
+                <div className="card-content">
                     <form ref="form" onSubmit={this.submitForm}>
-                        <p>This a the signup form</p>
-                        <input type="text" placeholder="NAME" ref="nameField" required></input>
-                        <input type="email" placeholder="EMAIL" ref="emailField" required></input>
-                        <input type="text" placeholder="USERNAME" ref="usernameField" required></input>
-                        <input type="password" placeholder="PASSWORD" ref="passwordField" required></input>
 
-                        <input type="text" placeholder="AGE" ref="ageField" pattern="[0-9]{1,3}" required></input>
-                        <input type="text" placeholder="WEIGHT (kg)" ref="weightField" pattern="[0-9]{1,3}" required></input>
-                        <input type="text" placeholder="HEIGHT (cm)" ref="heightField" pattern="[0-9]{1,3}" required></input>
+                        <span>Name</span>
+                        <input type="text" ref="nameField" required></input>
 
+                        <span>Email</span>
+                        <input type="email" ref="emailField" required></input>
+
+                        <span>Username</span>
+                        <input type="text" ref="usernameField" required></input>
+
+                        <span>Password</span>
+                        <input type="password" ref="passwordField" required></input>
+
+                        <span>Age</span>
+                        <input type="text" ref="ageField" pattern="[0-9]{1,3}" required></input>
+
+                        <span>Weight (kg)</span>
+                        <input type="text" ref="weightField" pattern="[0-9]{1,3}" required></input>
+
+                        <span>Height (cm)</span>
+                        <input type="text" ref="heightField" pattern="[0-9]{1,3}" required></input>
+
+                        <span>Gender</span>
                         <input name="gender" type="radio" id="Male" value="Male" required/>
                         <label htmlFor="Male">Male</label>
                         &nbsp;&nbsp;&nbsp;&nbsp;
                         <input name="gender" type="radio" id="Female" value="Female"/>
                         <label htmlFor="Female">Female</label>
 
+
                         {this.state.invalid_password ? <span><br /><br />Password must be at least 8 characters.</span> : ""}
                         {this.props.signup_err ? <span><br /><br />Either Username or Email has been taken. Please try another one.</span> : ""}
                         <br /><br />
-                        <button className="btn waves-effect waves-light" type="submit" name="action">SIGN UP
+
+                        <button className="btn waves-effect waves-light amber darken-2" type="submit" name="action">SIGN UP
                             <i className="material-icons right">send</i>
                         </button> <br />
                     </form>
                 </div>
+
                 <div className="card-action">
                     Already have an account ? <a href="#" onClick={this.props.toggleLogin}>Log in.</a>
                 </div>
