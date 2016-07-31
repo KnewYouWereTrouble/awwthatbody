@@ -15,7 +15,7 @@ const AppLayout = React.createClass({
             <div>
                 <Navbar />
                 <div className="row no-bot-margin">
-                    <div className="col s1 no-left-padding sidebar"> <Sidebar /> </div>
+                    <div className="col s1 no-left-padding sidebar z-depth-2"> <Sidebar /> </div>
                     <div className="col s11 "> {this.props.children} </div>
                 </div>
 

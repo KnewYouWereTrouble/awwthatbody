@@ -14,51 +14,51 @@ const Avatar = React.createClass({
         if(this.props.statistics.user_energy < this.props.user_daily_calorie_target * 7 / 10){
             return(
                 <div>
-                    <div className="card-panel teal">
+                    <div className="card-panel purple accent-1">
                         <p className="white-text">Good Job, but you need to eat more!</p>
                     </div>
-                    <br />
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     {this.props.gender === "Male" ?
-                        <img className="center-align avatar-pic" src="/images/skinnyboy.png"/>
+                        <img className="center-align avatar-pic" src="/images/skinnyboy.gif"/>
                         :
-                        <img className="center-align avatar-pic" src="/images/skinnygirl.png"/>
+                        <img className="center-align avatar-pic" src="/images/skinnygirl.gif"/>
                     }
 
                 </div>)
         }else if(this.props.statistics.user_energy < this.props.user_daily_calorie_target){
             return(
                 <div>
-                    <div className="card-panel orange darken-3">
-                        <p className="white-text">Good Job, you are eating well!</p>
+                    <div className="card-panel green accent-2">
+                        <p className="white-text">Good Job, but start to watch what you are eating alright?</p>
                     </div>
                     <br />
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     {this.props.gender === "Male" ?
-                        <img className="center-align avatar-pic" src="/images/healthyboy.png"/>
+                        <img className="center-align avatar-pic" src="/images/muscularboy.gif"/>
                         :
-                        <img className="center-align avatar-pic" src="/images/healthygirl.png"/>
+                        <img className="center-align avatar-pic" src="/images/musculargirl.gif"/>
                     }
                 </div>)
         }else{
             return(
                 <div>
                     <div className="card-panel red darken-3">
-                        <p className="white-text">Oh no, you are not eating well! You overshot your daily calorie target!</p>
+                        <p className="white-text">Hey hey, you are eating abit too much today!</p>
                     </div>
                     <br />
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     {this.props.gender === "Male" ?
-                        <img className="center-align avatar-pic" src="/images/fatboy.png"/>
+                        <img className="center-align avatar-pic" src="/images/fatboy.gif"/>
                         :
-                        <img className="center-align avatar-pic" src="/images/fatgirl.png"/>
+                        <img className="center-align avatar-pic" src="/images/fatgirl.gif"/>
                     }
+
                 </div>
             )
         }
@@ -69,6 +69,7 @@ const Avatar = React.createClass({
             <div>
                 <br /><br />
                 {this.whichToShow()}
+                <div className="divider"></div>
             </div>
         )
     }

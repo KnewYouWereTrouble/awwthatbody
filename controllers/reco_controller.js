@@ -16,7 +16,7 @@ exports.get_recommendation = function(req, res, next){
             var current_calorie = user.daily_stats.energy
 
             if(current_calorie > daily_calorie_target)
-                res.json({status : "Overshot target, should stop eating."})
+                res.json([])
             else{
                 var diff = daily_calorie_target - current_calorie
                 MongoClient.connect(dbconfig.url, function(err, db) {

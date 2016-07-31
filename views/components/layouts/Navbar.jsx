@@ -10,7 +10,7 @@ import * as actionCreators from '../../src/action_creators';
 const Navbar = React.createClass({
 
     getInitialState : function(){
-        var dpIdx = Math.floor(Math.random() * (10 - 0)) + 0;
+        var dpIdx = Math.floor(Math.random() * (9 - 0)) + 0;
         return {
             dpIdx : dpIdx
         }
@@ -27,7 +27,6 @@ const Navbar = React.createClass({
             case 6 : return "./images/dp6.jpg"
             case 7 : return "./images/dp7.jpg"
             case 8 : return "./images/dp8.jpg"
-            case 9 : return "./images/dp9.jpg"
         }
     },
 
@@ -46,9 +45,10 @@ const Navbar = React.createClass({
                                 <br /><br />
                                 <h3>Welcome&nbsp;</h3>
                                 <h4 className="condensed light">{this.props.username}</h4>
+                                <a className="amber white-text waves-effect waves-light btn" onClick={this.logout} href="/logout">Logout ?</a>
                             </div>
                         </div>
-                        <a onClick={this.logout} href="/logout">Logout ?</a>
+
                     </div>
 
 
