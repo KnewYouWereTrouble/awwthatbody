@@ -71,7 +71,7 @@ exports.get_user_history_month = function(req, res, next){
             history_stats = history_stats.concat(user.history_stats)
 
             if(req.body.monthIdx === 0){
-                history_stats = history_stats.slice(0, moment().date() + 1)
+                history_stats = history_stats.slice(0, moment().date())
             }
             else{
                 var month = moment().subtract(1, "months")

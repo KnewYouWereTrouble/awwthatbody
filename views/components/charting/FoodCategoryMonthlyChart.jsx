@@ -24,7 +24,6 @@ const FoodCategoryMonthlyChart = React.createClass({
     get_monthly_food_cat : function(){
         axios.post("/userdb/getusermonthfoodcat")
             .then(response => {
-                console.log(response.data)
                 if(this.state.cat_chart) this.state.cat_chart.destroy()
                 var ctx = ReactDOM.findDOMNode(this.refs.myChart);
                 var myPieChart = new Chart(ctx,{
