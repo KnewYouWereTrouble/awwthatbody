@@ -11,7 +11,7 @@ import axios from 'axios'
 const Avatar = React.createClass({
 
     whichToShow : function(){
-        if(this.props.statistics.user_energy < this.props.user_daily_calorie_target * 7 / 10){
+        if(this.props.statistics.user_energy < this.props.user_daily_calorie_target * 5 / 10){
             return(
                 <div>
                     <div className="card-panel purple accent-1">
@@ -27,11 +27,11 @@ const Avatar = React.createClass({
                     }
 
                 </div>)
-        }else if(this.props.statistics.user_energy < this.props.user_daily_calorie_target){
+        }else if(this.props.statistics.user_energy < this.props.user_daily_calorie_target * 8 / 10){
             return(
                 <div>
                     <div className="card-panel green accent-2">
-                        <p className="white-text">Good Job, but start to watch what you are eating alright?</p>
+                        <p className="white-text">Good Job, you are eating right?</p>
                     </div>
                     <br />
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -41,6 +41,22 @@ const Avatar = React.createClass({
                         <img className="center-align avatar-pic" src="/images/muscularboy.gif"/>
                         :
                         <img className="center-align avatar-pic" src="/images/musculargirl.gif"/>
+                    }
+                </div>)
+        }else if(this.props.statistics.user_energy < this.props.user_daily_calorie_target){
+            return(
+                <div>
+                    <div className="card-panel amber accent-2">
+                        <p className="white-text">Good Job, but start to watch what you are eating alright?</p>
+                    </div>
+                    <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    {this.props.gender === "Male" ?
+                        <img className="center-align avatar-pic" src="/images/healthyboy.gif"/>
+                        :
+                        <img className="center-align avatar-pic" src="/images/healthygirl.gif"/>
                     }
                 </div>)
         }else{
