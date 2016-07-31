@@ -1,5 +1,6 @@
 var User = require("../models/user")
 var moment = require('moment')
+var moment_timezone = require('moment-timezone')
 
 exports.require_user_login = function(req, res, next){
     if(!req.user) res.redirect('/login?loggedin=false')
@@ -71,11 +72,11 @@ exports.get_user_history_month = function(req, res, next){
             history_stats = history_stats.concat(user.history_stats)
 
             if(req.body.monthIdx === 0){
-                history_stats = history_stats.slice(0, moment().date())
+                history_stats = history_stats.slice(0, moment().utcOffset(8).date())
             }
             else{
-                var month = moment().subtract(1, "months")
-                var num_days = moment().date()
+                var month = moment().utcOffset(8).subtract(1, "months")
+                var num_days = moment().utcOffset(8).date()
                 for(var i = 1; i < req.body.monthIdx; i++){
                     num_days += new Date(month.year(), month.month()+1, 0).getDate()
                     month.subtract(1, "months")
