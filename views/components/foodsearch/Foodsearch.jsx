@@ -16,7 +16,7 @@ const Foodsearch = React.createClass({
         return {
             foodlist : [],
             foodcard : "",
-            reco : []
+            reco : null,
         }
     },
 
@@ -55,6 +55,41 @@ const Foodsearch = React.createClass({
         this.getRecommendation()
     },
 
+    display_reco : function(){
+        if(this.state.reco !== null){
+            if(this.state.reco.length === 0)
+                return (<span>Currently there are no recommendations available.</span>)
+            else {
+                return (
+                    <div className="collection food-list-result">
+                        {this.state.reco.map(function(food, index){
+                            return (
+                                <a key={index} className="collection-item  red-text text-accent-2">
+                                    {food}
+                                </a>
+                            )
+                        })}
+                    </div>
+                )
+            }
+        }
+        else{
+            return (
+                <div className="spinner-layer spinner-red">
+                    <div className="circle-clipper left">
+                        <div className="circle"></div>
+                    </div>
+                    <div className="gap-patch">
+                        <div className="circle"></div>
+                    </div>
+                    <div className="circle-clipper right">
+                        <div className="circle"></div>
+                    </div>
+                </div>
+            )
+        }
+    },
+
     render : function(){
         return (
             <div className="row">
@@ -80,24 +115,12 @@ const Foodsearch = React.createClass({
                     <div className="card-panel purple accent-1">
                         <p className="white-text">Here are some recommendations based on your calorie target and how much you eaten!</p>
                     </div>
-                    {this.state.reco.length === 0 ?
-                        <span>Currently there are no recommendations available.</span>
-                        :
-                        <div className="collection food-list-result">
-                            {this.state.reco.map(function(food, index){
-                                return (
-                                    <a key={index} className="collection-item  red-text text-accent-2">
-                                        {food}
-                                    </a>
-                                )
-                            })}
-                        </div>
-                    }
+                    {this.display_reco()}
+
                     <button className="amber white-text waves-effect waves-light btn" onClick={this.getRecommendation} name="action">Refresh!
                         <i className="material-icons right">send</i>
                     </button>
                 </div>
-
 
             </div>
 
