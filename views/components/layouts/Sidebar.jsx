@@ -72,15 +72,7 @@ const AppLayout = React.createClass({
                         <h2 className="center-align"><i className="fa fa-cutlery" aria-hidden="true"></i></h2>
                     </Link>
                 }
-                {this.state.path === "/explore" ?
-                    <Link className="orange-text text-accent-4" to='/explore' onClick={this.onClickExplore}>
-                        <h2 className="center-align"><i className="fa fa-camera" aria-hidden="true"></i></h2>
-                    </Link>
-                    :
-                    <Link className="amber-text text-accent-4" to='/explore' onClick={this.onClickExplore}>
-                        <h2 className="center-align"><i className="fa fa-camera" aria-hidden="true"></i></h2>
-                    </Link>
-                }
+
 
 
 
@@ -98,3 +90,16 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps, actionCreators)(AppLayout);
+
+
+/*
+{this.state.path === "/explore" ?
+    <Link className="orange-text text-accent-4" to='/explore' onClick={this.onClickExplore}>
+        <h2 className="center-align"><i className="fa fa-camera" aria-hidden="true"></i></h2>
+    </Link>
+    :
+    <Link className="amber-text text-accent-4" to='/explore' onClick={this.onClickExplore}>
+        <h2 className="center-align"><i className="fa fa-camera" aria-hidden="true"></i></h2>
+    </Link>
+}
+*/

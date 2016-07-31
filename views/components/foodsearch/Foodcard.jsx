@@ -25,6 +25,7 @@ const Foodcard = React.createClass({
         axios.post('/fooddb/addFood', {foodname : this.props.foodcard["Food Name"], type : "breakfast"})
             .then(response => {
                 alert("Food has been added as breakfast!")
+                this.props.getRecommendation()
             })
     },
 
@@ -33,6 +34,7 @@ const Foodcard = React.createClass({
         axios.post('/fooddb/addFood', {foodname : this.props.foodcard["Food Name"], type : "lunch"})
             .then(response => {
                 alert("Food has been added as lunch!")
+                this.props.getRecommendation()
             })
     },
 
@@ -41,6 +43,7 @@ const Foodcard = React.createClass({
         axios.post('/fooddb/addFood', {foodname : this.props.foodcard["Food Name"], type : "dinner"})
             .then(response => {
                 alert("Food has been added as dinner!")
+                this.props.getRecommendation()
             })
     },
     eat_supper : function(event){
@@ -48,6 +51,7 @@ const Foodcard = React.createClass({
         axios.post('/fooddb/addFood', {foodname : this.props.foodcard["Food Name"], type : "supper"})
             .then(response => {
                 alert("Food has been added as supper!")
+                this.props.getRecommendation()
             })
     },
     eat_snacks : function(event){
@@ -55,6 +59,7 @@ const Foodcard = React.createClass({
         axios.post('/fooddb/addFood', {foodname : this.props.foodcard["Food Name"], type : "snacks"})
             .then(response => {
                 alert("Food has been added as snacks!")
+                this.props.getRecommendation()
             })
     },
 

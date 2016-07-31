@@ -37,6 +37,8 @@ export default React.createClass({
                                     We are a team of students from NUS School of Computing.
                                     This project is part of our efforst for Orbital'16.
                                     Any feedback or suggestions are warmly welcomed and appreciated.
+                                    Some pictures used for this project does not belong to us, as such
+                                    the credit goes to the original owner.
                                 </p>
                             </div>
 

@@ -19,6 +19,8 @@ var user_controller = require('./controllers/user_controller')
 var auth_controller = require('./controllers/auth_controller')
 var food_controller = require('./controllers/food_controller')
 var img_controller = require('./controllers/img_controller')
+var reco_controller = require('./controllers/reco_controller')
+
 // Cron Job ~
 var user_cron = require('./models/user_cron')
 
@@ -148,6 +150,10 @@ app_router.route("/userdb/getuserhistorymonth")
 
 app_router.route("/userdb/getusermonthfoodcat")
     .post(user_controller.get_user_food_cat)
+
+app_router.route("/userdb/getrecommendation")
+    .post(reco_controller.get_recommendation)
+
 
 
 // Food DB Query routes ~

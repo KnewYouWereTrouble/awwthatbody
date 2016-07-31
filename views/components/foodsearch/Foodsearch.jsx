@@ -16,6 +16,7 @@ const Foodsearch = React.createClass({
         return {
             foodlist : [],
             foodcard : "",
+            reco : []
         }
     },
 
@@ -35,17 +36,32 @@ const Foodsearch = React.createClass({
     displayCard : function(event){
         axios.post('/fooddb/findOnefood', {foodname : event.target.text})
             .then(response => {
-
                 this.setState({foodcard : response.data})
             })
+    },
+
+    getRecommendation : function(){
+        axios.post("userdb/getrecommendation")
+            .then(response => {
+                var reco = []
+                for(var i=0; i < response.data.length; i++){
+                    reco.push(response.data[i]["Food Name"])
+                }
+                this.setState({reco : reco})
+            })
+    },
+
+    componentWillMount : function(){
+        this.getRecommendation()
     },
 
     render : function(){
         return (
             <div className="row">
-                <h3 className="condensed light">Food Search</h3>
+
 
                 <div className="col s4">
+                    <h3 className="condensed light">Food Search</h3>
                     <form onSubmit={this.submitForm}>
                         <input ref="foodnameField" type="text" placeholder='Enter food name'/>
                     </form>
@@ -53,17 +69,28 @@ const Foodsearch = React.createClass({
                 </div>
 
                 <div className="col s5">
-                    {this.state.foodcard !== "" ? <Foodcard foodcard={this.state.foodcard} /> : <span>&nbsp;</span>}
+                    {this.state.foodcard !== "" ? <Foodcard getRecommendation={this.getRecommendation}
+                        foodcard={this.state.foodcard} /> : <span>&nbsp;</span>}
                 </div>
 
 
 
                 <div className="col s3">
-                    <p>Food Recommendations</p>
-                    <p>UberEats,</p>
-                    <p>Food Panda,</p>
-                    <p>DeliveryRoo,</p>
-                    <p>Indicate food preference, low sugar, salt?</p>
+                    <h3 className="condensed light">Feeling Lost ?</h3>
+                    <span>Here are some recommendations</span>
+                    <div className="collection food-list-result">
+                        {this.state.reco.map(function(food, index){
+                            return (
+                                <a key={index} className="collection-item  red-text text-accent-2">
+                                    {food}
+                                </a>
+                            )
+                        })}
+                    </div>
+
+                    <button className="amber white-text waves-effect waves-light btn" onClick={this.getRecommendation} name="action">Refresh!
+                        <i className="material-icons right">send</i>
+                    </button>
                 </div>
 
 
