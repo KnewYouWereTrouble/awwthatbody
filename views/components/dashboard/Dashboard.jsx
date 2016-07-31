@@ -35,13 +35,14 @@ const Dashboard = React.createClass({
             user_dinner : [],
             user_supper : [],
             user_snacks : [],
+            ready : false
         }
     },
 
     getUserInfo : function(){
         axios.post('/userdb/getuser')
             .then(response => {
-                console.log(response.data)
+
                 this.setState({statistics : {
                                 user_energy : response.data.daily_stats.energy,
                                 user_protein : response.data.daily_stats.protein,
@@ -58,7 +59,8 @@ const Dashboard = React.createClass({
                                 user_dinner : response.data.dinner,
                                 user_supper : response.data.supper,
                                 user_snacks : response.data.snacks,
-                                gender : response.data.gender})
+                                gender : response.data.gender,
+                                ready : true})
             })
     },
 
@@ -106,8 +108,9 @@ const Dashboard = React.createClass({
 
     render : function(){
         return (
-
             <div>
+                {this.state.ready  ?
+                <div>
                 <div className="row">
                     <div className="col s4">
                         <h3 className="condensed light">Daily Targets</h3>
@@ -123,7 +126,6 @@ const Dashboard = React.createClass({
                         <Avatar gender={this.state.gender} statistics={this.state.statistics}
                             user_daily_calorie_target={this.state.user_daily_calorie_target}/>
                     </div>
-
                 </div>
 
                 <div className="row">
@@ -153,9 +155,13 @@ const Dashboard = React.createClass({
                         <DailyFoodIntake user_food_list={this.state.user_snacks} remove_food={this.remove_food_snacks}/>
                     </div>
                 </div>
-
+                </div>
+                :
+                <div className="progress">
+                    <div className="indeterminate"></div>
+                </div>
+            }
             </div>
-
         )
     }
 

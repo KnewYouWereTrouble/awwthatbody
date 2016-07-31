@@ -80,20 +80,19 @@ const Foodsearch = React.createClass({
                     <div className="card-panel purple accent-1">
                         <p className="white-text">Here are some recommendations based on your calorie target and how much you eaten!</p>
                     </div>
-                    <div className="collection food-list-result">
-                        {this.state.reco.length === 0 ?
-                            <span>Currently there are no recommendations available.</span>
-                            :
-                            this.state.reco.map(function(food, index){
+                    {this.state.reco.length === 0 ?
+                        <span>Currently there are no recommendations available.</span>
+                        :
+                        <div className="collection food-list-result">
+                            {this.state.reco.map(function(food, index){
                                 return (
                                     <a key={index} className="collection-item  red-text text-accent-2">
                                         {food}
                                     </a>
                                 )
-                            })
-                        }
-                    </div>
-
+                            })}
+                        </div>
+                    }
                     <button className="amber white-text waves-effect waves-light btn" onClick={this.getRecommendation} name="action">Refresh!
                         <i className="material-icons right">send</i>
                     </button>
