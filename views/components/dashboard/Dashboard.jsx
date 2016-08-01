@@ -12,7 +12,7 @@ import Avatar from './Avatar.jsx'
 
 import axios from 'axios'
 
-
+var ajaxOnCall = false;
 
 const Dashboard = React.createClass({
 
@@ -69,41 +69,56 @@ const Dashboard = React.createClass({
         this.getUserInfo()
     },
 
-
     remove_food_breakfast : function(event){
         event.preventDefault()
-        axios.post('/fooddb/removeFood',
-            {foodname : event.target.parentNode.parentNode.childNodes[1].textContent, type : "breakfast"})
-            .then(response => { this.getUserInfo() })
+        if(!ajaxOnCall){
+            ajaxOnCall = true
+            axios.post('/fooddb/removeFood',
+                {foodname : event.target.parentNode.parentNode.childNodes[1].textContent, type : "breakfast"})
+                .then(response => { this.getUserInfo(); ajaxOnCall = false })
+        }
+
 
     },
 
     remove_food_lunch : function(event){
         event.preventDefault()
-        axios.post('/fooddb/removeFood',
-            {foodname : event.target.parentNode.parentNode.childNodes[1].textContent, type : "lunch"})
-            .then(response => { this.getUserInfo() })
+        if(!ajaxOnCall){
+            ajaxOnCall = true
+            axios.post('/fooddb/removeFood',
+                {foodname : event.target.parentNode.parentNode.childNodes[1].textContent, type : "lunch"})
+                .then(response => { this.getUserInfo(); ajaxOnCall = false })
+        }
     },
 
     remove_food_dinner : function(event){
         event.preventDefault()
-        axios.post('/fooddb/removeFood',
-            {foodname : event.target.parentNode.parentNode.childNodes[1].textContent, type : "dinner"})
-            .then(response => { this.getUserInfo() })
+        if(!ajaxOnCall){
+            ajaxOnCall = true
+            axios.post('/fooddb/removeFood',
+                {foodname : event.target.parentNode.parentNode.childNodes[1].textContent, type : "dinner"})
+                .then(response => { this.getUserInfo(); ajaxOnCall = false })
+        }
     },
 
     remove_food_supper : function(event){
         event.preventDefault()
-        axios.post('/fooddb/removeFood',
-            {foodname : event.target.parentNode.parentNode.childNodes[1].textContent, type : "supper"})
-            .then(response => { this.getUserInfo() })
+        if(!ajaxOnCall){
+            ajaxOnCall = true
+            axios.post('/fooddb/removeFood',
+                {foodname : event.target.parentNode.parentNode.childNodes[1].textContent, type : "supper"})
+                .then(response => { this.getUserInfo(); ajaxOnCall = false })
+        }
     },
 
     remove_food_snacks : function(event){
         event.preventDefault()
-        axios.post('/fooddb/removeFood',
-            {foodname : event.target.parentNode.parentNode.childNodes[1].textContent, type : "snacks"})
-            .then(response => { this.getUserInfo() })
+        if(!ajaxOnCall){
+            ajaxOnCall = true
+            axios.post('/fooddb/removeFood',
+                {foodname : event.target.parentNode.parentNode.childNodes[1].textContent, type : "snacks"})
+                .then(response => { this.getUserInfo(); ajaxOnCall = false })
+        }
     },
 
     render : function(){

@@ -207,7 +207,7 @@ exports.user_add_food = function(req, res, next){
             }
 
             user.daily_stats.energy += req.food["Energy (kcal)"]
-            user.daily_stats.protein += Number((req.food["Protein (g)"]).toFixed(2))
+            user.daily_stats.protein += Math.round(req.food["Protein (g)"])
             user.daily_stats.fat_total += req.food["Fat Total (g)"]
             user.daily_stats.cholesterol+= req.food["Cholesterol (mg)"]
             user.daily_stats.dietary_fibre += req.food["Dietary Fibre (g)"]
@@ -270,7 +270,7 @@ exports.user_remove_food = function(req, res, next){
             }
 
             user.daily_stats.energy -= req.food["Energy (kcal)"]
-            user.daily_stats.protein -= Number((req.food["Protein (g)"]).toFixed(2))
+            user.daily_stats.protein -= Math.round(req.food["Protein (g)"])
             user.daily_stats.fat_total -= req.food["Fat Total (g)"]
             user.daily_stats.cholesterol -= req.food["Cholesterol (mg)"]
             user.daily_stats.dietary_fibre -= req.food["Dietary Fibre (g)"]
