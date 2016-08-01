@@ -10,7 +10,7 @@ import * as actionCreators from '../../src/action_creators';
 const Navbar = React.createClass({
 
     getInitialState : function(){
-        var dpIdx = Math.floor(Math.random() * (9 - 0)) + 0;
+        var dpIdx = Math.floor(Math.random() * (7 - 0)) + 0;
         return {
             dpIdx : dpIdx
         }
@@ -25,8 +25,6 @@ const Navbar = React.createClass({
             case 4 : return "./images/dp4.jpg"
             case 5 : return "./images/dp5.jpg"
             case 6 : return "./images/dp6.jpg"
-            case 7 : return "./images/dp7.jpg"
-            case 8 : return "./images/dp8.jpg"
         }
     },
 

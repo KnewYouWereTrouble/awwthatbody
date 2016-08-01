@@ -44,22 +44,14 @@ export default React.createClass({
 
                             <div className="col l3 s12">
                                 <h5 className="white-text">Desmond</h5>
-                                <ul>
-                                    <li><a className="white-text" href="#!">Facebook</a></li>
-                                    <li><a className="white-text" href="#!">Twitter</a></li>
-                                    <li><a className="white-text" href="#!">Instagram</a></li>
-                                    <li><a className="white-text" href="#!">Google+</a></li>
-                                </ul>
+                                    <h4 className="landing-social-contact"><a className="white-text" href="https://www.facebook.com/detchmund"><i className="fa fa-facebook-official" aria-hidden="true"></i></a></h4>
+                                    <h4 className="landing-social-contact"><a className="white-text" href="https://www.instagram.com/desmondnation/"><i className="fa fa-instagram" aria-hidden="true"></i></a></h4>
                             </div>
 
                             <div className="col l3 s12">
                                 <h5 className="white-text">Damin</h5>
-                                <ul>
-                                    <li><a className="white-text" href="#!">Facebook</a></li>
-                                    <li><a className="white-text" href="#!">Twitter</a></li>
-                                    <li><a className="white-text" href="#!">Instagram</a></li>
-                                    <li><a className="white-text" href="#!">Google+</a></li>
-                                </ul>
+                                <h4 className="landing-social-contact"><a className="white-text" href="https://www.facebook.com/profile.php?id=699246220"><i className="fa fa-facebook-official" aria-hidden="true"></i></a></h4>
+                                <h4 className="landing-social-contact"><a className="white-text" href="https://www.facebook.com/l.php?u=https%3A%2F%2Fwww.instagram.com%2Fbrotherdamin%2F&h=IAQG0mE7d"><i className="fa fa-instagram" aria-hidden="true"></i></a></h4>
                             </div>
                         </div>
                     </div>

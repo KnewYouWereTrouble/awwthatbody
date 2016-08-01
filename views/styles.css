@@ -18,6 +18,11 @@
 
 }
 
+.landing-social-contact {
+    display: inline-block;
+    margin-right: 1vw;
+}
+
 .login-wrapper {
     position: absolute;
     top: 50%;
@@ -65,6 +70,10 @@
 .avatar-pic {
     width : 40%;
     height: 18vw;
+}
+.avatar-pic-fatgirl {
+    width : 70%;
+    height: 20vw;
 }
 
 /* Sidebar */

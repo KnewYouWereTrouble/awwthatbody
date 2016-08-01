@@ -142,12 +142,12 @@ const Foodsearch = React.createClass({
 
                 <div className="col s3">
                     <h3 className="condensed light">Feeling Lost ?</h3>
-                    <div className="card-panel purple accent-1">
+                    <div className="card-panel amber darken-2">
                         <p className="white-text">Here are some recommendations based on your calorie target and how much you eaten!</p>
                     </div>
                     {this.display_reco()}
 
-                    <button className="amber white-text waves-effect waves-light btn" onClick={this.getRecommendation} name="action">Refresh!
+                    <button className="amber white-text waves-effect waves-light btn darken-2" onClick={this.getRecommendation} name="action">Refresh!
                         <i className="material-icons right">send</i>
                     </button>
                 </div>
