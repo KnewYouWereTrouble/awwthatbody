@@ -75,7 +75,7 @@ const Foodsearch = React.createClass({
         }
         else{
             return (
-                <div className="preloader-wrapper big active">
+                <div className="preloader-wrapper big active ploader">
                  <div className="spinner-layer spinner-blue">
                    <div className="circle-clipper left">
                      <div className="circle"></div>
@@ -147,6 +147,7 @@ const Foodsearch = React.createClass({
                     </div>
                     {this.display_reco()}
 
+                    <br />
                     <button className="amber white-text waves-effect waves-light btn darken-2" onClick={this.getRecommendation} name="action">Refresh!
                         <i className="material-icons right">send</i>
                     </button>
