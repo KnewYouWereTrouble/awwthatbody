@@ -23,6 +23,7 @@
     margin-right: 1vw;
 }
 
+/* Login */
 .login-wrapper {
     position: absolute;
     top: 50%;
@@ -36,6 +37,19 @@
 .icon-block .material-icons {
 	font-size: inherit;
 }
+
+.loginboy1 {
+    position : absolute;
+    bottom : 1vw;
+    left : 14vw;
+}
+
+.loginboy2 {
+    position : absolute;
+    bottom : 1vw;
+    right : 14vw;
+}
+
 
 /* Navbar style */
 .navbar-style {
