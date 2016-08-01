@@ -215,6 +215,7 @@ exports.user_add_food = function(req, res, next){
             user.daily_stats.calcium += isNaN(req.food["Calcium (mg)"]) ? 0 : req.food["Calcium (mg)"]
             user.daily_stats.sodium += req.food["Sodium (mg)"]
 
+
             switch(req.food.category){
                 case "Meat" : user.month_meat += 1; break;
                 case "Vegetables" : user.month_vegetables += 1; break;
@@ -270,13 +271,21 @@ exports.user_remove_food = function(req, res, next){
             }
 
             user.daily_stats.energy -= req.food["Energy (kcal)"]
+            user.daily_stats.energy = user.daily_stats.energy < 1 ? 0 : user.daily_stats.energy
             user.daily_stats.protein -= Math.round(req.food["Protein (g)"])
+            user.daily_stats.protein = user.daily_stats.protein < 1 ? 0 : user.daily_stats.protein
             user.daily_stats.fat_total -= req.food["Fat Total (g)"]
+            user.daily_stats.fat_total = user.daily_stats.fat_total < 1 ? 0 : user.daily_stats.fat_total
             user.daily_stats.cholesterol -= req.food["Cholesterol (mg)"]
+            user.daily_stats.cholesterol = user.daily_stats.cholesterol < 1 ? 0 : user.daily_stats.cholesterol
             user.daily_stats.dietary_fibre -= req.food["Dietary Fibre (g)"]
+            user.daily_stats.dietary_fibre = user.daily_stats.dietary_fibre < 1 ? 0 : user.daily_stats.dietary_fibre
             user.daily_stats.carbohydrates -= req.food["Carbohydrates (g)"]
+            user.daily_stats.carbohydrates = user.daily_stats.carbohydrates < 1 ? 0 : user.daily_stats.carbohydrates
             user.daily_stats.calcium -= isNaN(req.food["Calcium (mg)"]) ? 0 : req.food["Calcium (mg)"]
+            user.daily_stats.calcium = user.daily_stats.calcium < 1 ? 0 : user.daily_stats.calcium
             user.daily_stats.sodium -= req.food["Sodium (mg)"]
+            user.daily_stats.sodium = user.daily_stats.sodium < 1 ? 0 : user.daily_stats.sodium
 
             switch(req.food.category){
                 case "Meat" : user.month_meat -= 1; break;
