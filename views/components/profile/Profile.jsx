@@ -133,7 +133,7 @@ const Profile = React.createClass({
                                 onChange={this.handleCaloriesChange} placeholder="Calories (kcal)"></input>
 
                             <button className="btn waves-effect waves-light amber darken-2" type="submit" name="action">UPDATE
-                                <i className="material-icons right">send</i>
+                                <i className="fa fa-paper-plane-o" aria-hidden="true"></i>
                             </button> <br />
 
                         </form>

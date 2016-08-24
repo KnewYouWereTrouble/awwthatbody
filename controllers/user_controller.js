@@ -270,6 +270,7 @@ exports.user_remove_food = function(req, res, next){
                     break;
             }
 
+
             user.daily_stats.energy -= req.food["Energy (kcal)"]
             user.daily_stats.energy = user.daily_stats.energy < 1 ? 0 : user.daily_stats.energy
             user.daily_stats.protein -= Math.round(req.food["Protein (g)"])

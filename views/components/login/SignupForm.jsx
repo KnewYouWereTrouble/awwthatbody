@@ -76,7 +76,7 @@ const SignupForm = React.createClass({
                         <br /><br />
 
                         <button className="btn waves-effect waves-light amber darken-2" type="submit" name="action">SIGN UP
-                            <i className="material-icons right">send</i>
+                            <i className="fa fa-paper-plane-o" aria-hidden="true"></i>
                         </button> <br />
                     </form>
                 </div>

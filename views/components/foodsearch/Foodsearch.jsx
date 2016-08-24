@@ -149,7 +149,7 @@ const Foodsearch = React.createClass({
 
                     <br />
                     <button className="amber white-text waves-effect waves-light btn darken-2" onClick={this.getRecommendation} name="action">Refresh!
-                        <i className="material-icons right">send</i>
+                        <i className="fa fa-paper-plane-o" aria-hidden="true"></i>
                     </button>
                 </div>
 

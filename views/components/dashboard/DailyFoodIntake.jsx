@@ -19,7 +19,7 @@ const DailyFoodIntake = React.createClass({
                             <li className="collection-item" key={index}>
                                 {food}
                                 <a href="#" onClick={this.props.remove_food} className="secondary-content pink-text text-lighten-1">
-                                    <i className="material-icons">close</i>
+                                    <i className="fa fa-times" aria-hidden="true"></i>
                                 </a>
                             </li>
                         )

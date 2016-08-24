@@ -70,13 +70,13 @@ const Foodcard = React.createClass({
                     <img className="activator foodcard-img" src={this.props.foodcard["imgurl"]} />
                 </div>
                 <div className="card-content">
-                    <span className="card-title activator amber-text">{this.props.foodcard["Food Name"]}<i className="material-icons right">more_vert</i></span>
+                    <span className="card-title activator amber-text">{this.props.foodcard["Food Name"]}<i className="fa fa-bars" aria-hidden="true"></i></span>
                     <p>Serving Portion: {this.props.foodcard["Serving Portion"]}</p>
                     <p>Calories (kcal): {this.props.foodcard["Energy (kcal)"]}</p>
                     <p>Protein (g): {this.props.foodcard["Protein (g)"]}</p>
                 </div>
                 <div className="card-reveal">
-                    <span className="card-title amber-text">{this.props.foodcard["Food Name"]}<i className="material-icons right">close</i></span>
+                    <span className="card-title amber-text">{this.props.foodcard["Food Name"]}<i className="fa fa-times" aria-hidden="true"></i></span>
                     <p>Calories (kcal): {this.props.foodcard["Energy (kcal)"]}</p>
                     <p>Protein (g): {this.props.foodcard["Protein (g)"]}</p>
                     <p>Fat Total (g): {this.props.foodcard["Fat Total (g)"]}</p>
